@@ -1,6 +1,6 @@
-package HotelReservationApplication.Service;
+package HotelReservationApplication.Service.CustomerService;
 
-public class registration {
+public class Registration {
 
     public static void registration(){
         System.out.println("registration");

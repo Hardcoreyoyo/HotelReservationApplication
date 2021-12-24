@@ -1,4 +1,4 @@
-package HotelReservationApplication.Service;
+package HotelReservationApplication.Service.CustomerService;
 
 public class Login {
 

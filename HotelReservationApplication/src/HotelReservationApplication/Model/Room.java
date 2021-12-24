@@ -1,13 +1,15 @@
 package HotelReservationApplication.Model;
 
-import java.util.Date;
-
 public class Room {
 
     private Double room_price;
-    private Integer room_id;
+    private Integer room_number;
     private RoomType roomType;
-    private Date reserved_date;
-    private Date empty_data; //
+
+    public Room(Double room_price, Integer room_number, RoomType roomType) {
+        this.room_price = room_price;
+        this.room_number = room_number;
+        this.roomType = roomType;
+    }
 
 }

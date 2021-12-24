@@ -1,10 +1,25 @@
 package HotelReservationApplication.Model;
 
+import java.util.regex.Pattern;
+
 public class User {
 
     private String first_name;
     private String last_name;
     private String email;
+
+    public User(String first_name, String last_name, String email) throws Exception {
+        this.first_name = first_name;
+        this.last_name = last_name;
+
+        Pattern pattern = Pattern.compile("^(.+)@(.+).com$");
+        if (pattern.matcher(email).matches()) {
+            this.email = email;
+        }else {
+            throw new Exception("The email Form Wrong !");
+        }
+
+    }
 
     public String getFirst_name() {
         return first_name;
@@ -29,4 +44,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
 }

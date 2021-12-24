@@ -1,26 +1,25 @@
-package HotelReservationApplication.Controller.MainMenu;
+package HotelReservationApplication.Controller.AdminMenu;
 
-import HotelReservationApplication.Controller.AdminMenu.AdminMenu;
 import HotelReservationApplication.Service.CustomerService.Login;
 import HotelReservationApplication.Service.CustomerService.Registration;
 
 import java.util.*;
 
-public class MainMenu {
+public class AdminMenu {
 
-    public static void MainMenu(){
+    public static void AdminMenu(){
 
-        System.out.println("1. Find and reserve a room");
-        System.out.println("2. See my reservations");
-        System.out.println("3. Create an account");
-        System.out.println("4. Admin");
-        System.out.println("5. Exit");
+        System.out.println("1. see all Custom");
+        System.out.println("2. see all Room");
+        System.out.println("3. See all Reservations");
+        System.out.println("4. add a Room");
+        System.out.println("5. Back to Main Menu");
         System.out.println("---- Please Select Number 1 ~ 5 ----");
-        Select();
+        AdminSelect();
 
     }
 
-    private static void Select(){
+    private static void AdminSelect(){
 
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
@@ -37,7 +36,7 @@ public class MainMenu {
             scanner.close();
             System.exit(0);
         } else {
-            MainMenu();
+            AdminMenu();
         }
 
     }

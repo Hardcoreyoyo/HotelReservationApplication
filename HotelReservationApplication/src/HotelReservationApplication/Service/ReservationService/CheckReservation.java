@@ -1,4 +1,4 @@
-package HotelReservationApplication.Service;
+package HotelReservationApplication.Service.ReservationService;
 
 public class CheckReservation {
 
