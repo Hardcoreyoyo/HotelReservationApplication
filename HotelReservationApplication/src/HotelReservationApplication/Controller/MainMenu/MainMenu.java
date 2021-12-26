@@ -1,12 +1,16 @@
 package HotelReservationApplication.Controller.MainMenu;
 
 import HotelReservationApplication.Controller.AdminMenu.AdminMenu;
+import HotelReservationApplication.InterfaceApi.HotelResource;
 import HotelReservationApplication.Service.CustomerService.Login;
-import HotelReservationApplication.Service.CustomerService.Registration;
+import HotelReservationApplication.Service.CustomerService.UserRegistration;
 
 import java.util.*;
 
 public class MainMenu {
+
+
+
 
     public static void MainMenu(){
 
@@ -22,6 +26,7 @@ public class MainMenu {
 
     private static void Select(){
 
+        UserRegistration userRegistration = new UserRegistration();
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
@@ -30,7 +35,7 @@ public class MainMenu {
         }else if (Objects.equals(userInput, "2")){
             Login.Login();
         }else if (Objects.equals(userInput, "3")){
-            Registration.registration();
+            userRegistration.Registration();
         }else if (Objects.equals(userInput, "4")){
             AdminMenu.AdminMenu();
         }else if (Objects.equals(userInput, "5")){

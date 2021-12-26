@@ -1,7 +1,6 @@
 package HotelReservationApplication.Controller.AdminMenu;
 
 import HotelReservationApplication.Service.CustomerService.Login;
-import HotelReservationApplication.Service.CustomerService.Registration;
 
 import java.util.*;
 
@@ -29,7 +28,7 @@ public class AdminMenu {
         }else if (Objects.equals(userInput, "2")){
             Login.Login();
         }else if (Objects.equals(userInput, "3")){
-            Registration.registration();
+
         }else if (Objects.equals(userInput, "4")){
             AdminMenu.AdminMenu();
         }else if (Objects.equals(userInput, "5")){

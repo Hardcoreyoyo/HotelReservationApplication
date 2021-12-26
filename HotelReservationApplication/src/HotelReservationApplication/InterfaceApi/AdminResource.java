@@ -8,4 +8,6 @@ public interface AdminResource {
 
     public void addRoom();
 
+
+
 }

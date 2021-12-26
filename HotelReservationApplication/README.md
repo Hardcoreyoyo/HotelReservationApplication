@@ -1,5 +1,14 @@
 202112250136
 
+try to understand How is interface work in big structure.
+Is necessary to use static in void ?
+
+<br>
+<br>
+<br>
+
+202112250136
+
 Build rough structure  
 
 add:   
