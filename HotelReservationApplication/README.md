@@ -1,3 +1,13 @@
+202112271921
+
+fucking SINGLETON
+solve lose data while new Class every time
+
+<br>
+<br>
+<br>
+
+
 202112271459
 
 Solution:  

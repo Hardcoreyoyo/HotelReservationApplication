@@ -4,7 +4,7 @@ import HotelReservationApplication.Model.User;
 
 public interface AdminResource {
 
-    public void getCustom();
+    public User getCustom(String email);
 
     public void getRoom();
 
