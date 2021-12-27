@@ -7,14 +7,13 @@ import java.util.Map;
 public class RoomDataBase {
 
     private static final RoomDataBase roomDataBase = new RoomDataBase();
-
-    private final Map<Integer, Room> room = new HashMap<>();
+    private final Map<String, Room> room = new HashMap<>();
 
     public static RoomDataBase getRoomDataBase() {
         return roomDataBase;
     }
 
-    public Map<Integer, Room> getRoom() {
+    public Map<String, Room> getRoom() {
         return room;
     }
 

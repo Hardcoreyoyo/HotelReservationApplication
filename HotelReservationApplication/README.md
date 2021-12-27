@@ -1,8 +1,19 @@
+202112280034
+
+change something
+SINGLETON: AdminService，CustomerService。
+void: getAllUser，getAllRoom。(obey Requirements)
+
+
+<br>
+<br>
+<br>
+
 202112272259
 
 build something
 SINGLETON: UserDataBase，RoomDataBase。
-void: getAllUser，getAllRoom。
+void: getAllUser，getAllRoom，addRoom。
 
 
 <br>
@@ -11,8 +22,8 @@ void: getAllUser，getAllRoom。
 
 202112271921
 
-fucking SINGLETON
-solve lose data while new Class every time
+fucking SINGLETON  
+solve lose data while new Class every time  
 
 <br>
 <br>
@@ -22,10 +33,10 @@ solve lose data while new Class every time
 202112271459
 
 Solution:  
-interface must override all void, abstract is not.
-u can override void which is not used empty.
-maybe change package structure to make sense.
-using scanner.close careful
+interface must override all void, abstract is not.  
+override void which is not used empty.  
+maybe change package structure to make sense.  
+using scanner.close careful  
 
 <br>
 <br>

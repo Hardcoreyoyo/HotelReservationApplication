@@ -1,9 +1,10 @@
 package HotelReservationApplication.Controller.MainMenu;
 
 import HotelReservationApplication.Controller.AdminMenu.AdminMenu;
-import HotelReservationApplication.InterfaceApi.HotelResource;
-import HotelReservationApplication.Service.CustomerService.CustomerService;
-import java.util.*;
+
+import java.util.Objects;
+import java.util.Scanner;
+
 
 public class MainMenu{
 

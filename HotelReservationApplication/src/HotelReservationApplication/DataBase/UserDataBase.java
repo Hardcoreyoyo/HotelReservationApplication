@@ -7,7 +7,6 @@ import java.util.Map;
 public class UserDataBase {
 
     private static final UserDataBase userDataBase = new UserDataBase();
-
     private final Map<String, User> user = new HashMap<>();
 
     public static UserDataBase getUserDataBase() {
@@ -24,4 +23,5 @@ public class UserDataBase {
                 "user=" + user +
                 '}';
     }
+
 }

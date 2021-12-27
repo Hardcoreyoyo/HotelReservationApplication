@@ -1,48 +1,47 @@
 package HotelReservationApplication.Model;
 
-public class Room {
+import HotelReservationApplication.Dao.IRoom;
 
-    private Double room_price;
-    private Integer room_number;
-    private RoomType roomType;
+public class Room implements IRoom {
 
-    public Room(Double room_price, Integer room_number, RoomType roomType) {
+    private final Double room_price;
+    private final String room_number;
+    private final RoomType roomType;
+
+    public Room(Double room_price, String room_number, RoomType roomType) {
         this.room_price = room_price;
         this.room_number = room_number;
-        this.roomType = roomType;
-    }
-
-    public Double getRoom_price() {
-        return room_price;
-    }
-
-    public void setRoom_price(Double room_price) {
-        this.room_price = room_price;
-    }
-
-    public Integer getRoom_number() {
-        return room_number;
-    }
-
-    public void setRoom_number(Integer room_number) {
-        this.room_number = room_number;
-    }
-
-    public RoomType getRoomType() {
-        return roomType;
-    }
-
-    public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
     }
 
     @Override
-    public String toString() {
-        return "Room{" +
-                "room_price=" + room_price +
-                ", room_number=" + room_number +
-                ", roomType=" + roomType +
-                '}';
+    public String getRoom_number() {
+        return this.room_number;
     }
+
+    @Override
+    public Double getRoom_price() {
+        return this.room_price;
+    }
+
+    @Override
+    public RoomType getRoomType() {
+        return this.roomType;
+    }
+
+    @Override
+    public boolean isFree() {
+        return this.room_price != null && this.room_price.equals(0.0);
+    }
+
+    @Override
+    public String toString() {
+        return "\n" +
+                "Room Number: " + room_number + "\n" +
+                "Room Type: " + room_price + "\n" +
+                "Room Price: " + roomType + "\n" +
+                "\n";
+    }
+
 
 }

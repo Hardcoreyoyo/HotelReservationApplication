@@ -19,12 +19,14 @@ public class Main {
         customerService.UserRegisteration("first5", "second5", "test5@test.com");
 
 
-        adminService.addRoom(125.0, 1, RoomType.Single);
-        adminService.addRoom(150.0, 2, RoomType.Single);
-        adminService.addRoom(200.0, 3, RoomType.Single);
-        adminService.addRoom(300.0, 4, RoomType.Double);
-        adminService.addRoom(350.0, 5, RoomType.Double);
+        adminService.addRoom(125.0, "1", RoomType.Single);
+        adminService.addRoom(150.0, "2", RoomType.Single);
+        adminService.addRoom(200.0, "3", RoomType.Single);
+        adminService.addRoom(300.0, "4", RoomType.Double);
+        adminService.addRoom(350.0, "5", RoomType.Double);
+
         new MainMenu().MainMenu();
+
     }
 
 }

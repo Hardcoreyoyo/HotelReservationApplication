@@ -22,10 +22,6 @@ public class User {
 
     }
 
-    public User() {
-
-    }
-
     public String getFirst_name() {
         return first_name;
     }
@@ -52,11 +48,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "\n" +
+               "First Name: " + first_name + "\n" +
+               "Last Name: " + last_name + "\n" +
+               "Email: " + email + "\n" +
+               "\n";
     }
 
 }

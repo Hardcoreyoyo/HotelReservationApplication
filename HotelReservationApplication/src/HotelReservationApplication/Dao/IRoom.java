@@ -4,9 +4,9 @@ import HotelReservationApplication.Model.RoomType;
 
 public interface IRoom {
 
-    public String getRoomNumber();
+    public String getRoom_number();
 
-    public Double getRoomPrice();
+    public Double getRoom_price();
 
     public RoomType getRoomType();
 

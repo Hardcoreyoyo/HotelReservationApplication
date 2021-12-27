@@ -6,7 +6,7 @@ import java.util.*;
 
 public class AdminMenu {
 
-    AdminService adminService = new AdminService();
+    private static final AdminService adminService = AdminService.getAdminService();
 
     public void AdminMenu(){
 
@@ -31,9 +31,9 @@ public class AdminMenu {
             String userInput = scanner.nextLine();
 
             if(Objects.equals(userInput, "1")){
-                adminService.getAllUser();
+                ShowAllUsers();
             }else if (Objects.equals(userInput, "2")){
-                adminService.getAllRoom();
+                ShowAllRooms();
             }else if (Objects.equals(userInput, "3")){
 //                adminService.getReservations();
             }else if (Objects.equals(userInput, "4")){
@@ -54,12 +54,30 @@ public class AdminMenu {
 
     }
 
+    private void ShowAllUsers(){
+
+        System.out.println("---------------- All User Data ----------------\n");
+
+        if (adminService.getAllUsers().isEmpty()) {
+            System.out.println("---------------- No User found ! ----------------\n");
+        } else {
+            adminService.getAllUsers().forEach(System.out::println);
+        }
+        new AdminMenu().AdminMenu();
+
+    }
+
+    private void ShowAllRooms(){
+
+        System.out.println("---------------- All Room Data ----------------\n");
+
+        if (adminService.getAllRooms().isEmpty()) {
+            System.out.println("---------------- No Room found ! ----------------\n");
+        } else {
+            adminService.getAllRooms().forEach(System.out::println);
+        }
+        new AdminMenu().AdminMenu();
+
+    }
+
 }
-
-
-
-
-//    private final CustomerService customerService = CustomerService.getCustomerService();
-
-//    AdminService adminService = new AdminService();
-//    CustomerService customerService = new CustomerService();

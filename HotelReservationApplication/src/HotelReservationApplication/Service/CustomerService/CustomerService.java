@@ -6,7 +6,12 @@ import HotelReservationApplication.Model.User;
 
 public class CustomerService implements HotelResource {
 
-    private final UserDataBase userDataBase = UserDataBase.getUserDataBase();
+    private static final CustomerService customerService = new CustomerService();
+    private static final UserDataBase userDataBase = UserDataBase.getUserDataBase();
+
+    public static CustomerService getCustomerService(){
+        return customerService;
+    }
 
     @Override
     public void Login() {
@@ -34,11 +39,3 @@ public class CustomerService implements HotelResource {
     }
 
 }
-
-
-
-//    private static CustomerService customerService = new CustomerService();
-
-//    public static CustomerService getCustomerService(){
-//        return customerService;
-//    }
