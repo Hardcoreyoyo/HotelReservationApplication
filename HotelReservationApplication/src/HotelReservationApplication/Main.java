@@ -1,9 +1,14 @@
 package HotelReservationApplication;
 
 import HotelReservationApplication.Controller.MainMenu.MainMenu;
+import HotelReservationApplication.Dao.IRoom;
+import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.RoomType;
 import HotelReservationApplication.Service.AdminService.AdminService;
 import HotelReservationApplication.Service.CustomerService.CustomerService;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -19,11 +24,13 @@ public class Main {
         customerService.UserRegisteration("first5", "second5", "test5@test.com");
 
 
-        adminService.addRoom(125.0, "1", RoomType.Single);
-        adminService.addRoom(150.0, "2", RoomType.Single);
-        adminService.addRoom(200.0, "3", RoomType.Single);
-        adminService.addRoom(300.0, "4", RoomType.Double);
-        adminService.addRoom(350.0, "5", RoomType.Double);
+        List<IRoom> iRooms = new ArrayList<>();
+        iRooms.add(new Room(125.0, "1", RoomType.Single));
+        iRooms.add(new Room(150.0, "2", RoomType.Single));
+        iRooms.add(new Room(200.0, "3", RoomType.Single));
+        iRooms.add(new Room(300.0, "4", RoomType.Double));
+        iRooms.add(new Room(350.0, "5", RoomType.Double));
+        adminService.addRoom(iRooms);
 
         new MainMenu().MainMenu();
 

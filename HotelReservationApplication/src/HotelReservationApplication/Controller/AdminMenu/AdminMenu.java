@@ -1,6 +1,9 @@
 package HotelReservationApplication.Controller.AdminMenu;
 
 import HotelReservationApplication.Controller.MainMenu.MainMenu;
+import HotelReservationApplication.Dao.IRoom;
+import HotelReservationApplication.Model.Room;
+import HotelReservationApplication.Model.RoomType;
 import HotelReservationApplication.Service.AdminService.AdminService;
 import java.util.*;
 
@@ -37,7 +40,7 @@ public class AdminMenu {
             }else if (Objects.equals(userInput, "3")){
 //                adminService.getReservations();
             }else if (Objects.equals(userInput, "4")){
-//                adminService.addRoom();
+                AddNewRoom();
             }else if (Objects.equals(userInput, "5")){
                 new MainMenu().MainMenu();
             } else {
@@ -78,6 +81,18 @@ public class AdminMenu {
         }
         new AdminMenu().AdminMenu();
 
+    }
+
+    private void AddNewRoom(){
+        Room room = new Room(600.0, "6", RoomType.Double);
+
+        List<IRoom> list = new ArrayList<>();
+        list.add(room);
+        adminService.addRoom(list);
+
+        System.out.println("\n---------------- Add Room successful ----------------\n" + "\n");
+
+        new AdminMenu().AdminMenu();
     }
 
 }

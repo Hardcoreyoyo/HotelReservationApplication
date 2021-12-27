@@ -1,6 +1,7 @@
 package HotelReservationApplication.Service.AdminService;
 
 import HotelReservationApplication.Controller.AdminMenu.AdminMenu;
+import HotelReservationApplication.Dao.IRoom;
 import HotelReservationApplication.DataBase.RoomDataBase;
 import HotelReservationApplication.DataBase.UserDataBase;
 import HotelReservationApplication.InterfaceApi.AdminResource;
@@ -9,6 +10,8 @@ import HotelReservationApplication.Model.RoomType;
 import HotelReservationApplication.Model.User;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Objects;
 
 public class AdminService implements AdminResource {
 
@@ -41,10 +44,8 @@ public class AdminService implements AdminResource {
     }
 
     @Override
-    public void addRoom(Double room_price, String room_number, RoomType roomType) {
-        roomDataBase.getRoom().put(room_number, new Room(room_price, room_number, roomType));
-
-        System.out.println("\n---------------- Add Room successful ----------------\n" + "\n");
+    public void addRoom(List<IRoom> rooms){
+        rooms.forEach(iRoom -> roomDataBase.getRoom().put(iRoom.getRoom_number(), new Room(iRoom.getRoom_price(), iRoom.getRoom_number(), iRoom.getRoomType())));
     }
 
 }
