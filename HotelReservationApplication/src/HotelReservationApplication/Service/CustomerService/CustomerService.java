@@ -1,23 +1,12 @@
 package HotelReservationApplication.Service.CustomerService;
 
 import HotelReservationApplication.InterfaceApi.HotelResource;
+import HotelReservationApplication.DataBase.UserDataBase;
 import HotelReservationApplication.Model.User;
-//import HotelReservationApplication.Model.UserDataBase;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class CustomerService implements HotelResource {
 
-//    UserDataBase userDataBase = new UserDataBase();
-
-    private static final CustomerService SINGLETON = new CustomerService();
-
-    private final Map<String, User> user = new HashMap<>();
-
-    public static CustomerService getSingleton() {
-        return SINGLETON;
-    }
+    private final UserDataBase userDataBase = UserDataBase.getUserDataBase();
 
     @Override
     public void Login() {
@@ -26,8 +15,7 @@ public class CustomerService implements HotelResource {
 
     @Override
     public void UserRegisteration(String first_name, String last_name, String email) {
-        System.out.println("---- UserRegisteration ----");
-        user.put(email, new User(first_name, last_name, email));
+        userDataBase.getUser().put(email, new User(first_name, last_name, email));
     }
 
     @Override
@@ -42,7 +30,15 @@ public class CustomerService implements HotelResource {
 
     @Override
     public User getCustom(String email) {
-        return user.get(email);
+        return userDataBase.getUser().get(email);
     }
 
 }
+
+
+
+//    private static CustomerService customerService = new CustomerService();
+
+//    public static CustomerService getCustomerService(){
+//        return customerService;
+//    }

@@ -2,16 +2,11 @@ package HotelReservationApplication.Controller.AdminMenu;
 
 import HotelReservationApplication.Controller.MainMenu.MainMenu;
 import HotelReservationApplication.Service.AdminService.AdminService;
-import HotelReservationApplication.Service.CustomerService.CustomerService;
-
 import java.util.*;
 
 public class AdminMenu {
 
-//    AdminService adminService = new AdminService();
-//    CustomerService customerService = new CustomerService();
-
-    private final CustomerService customerService = CustomerService.getSingleton();
+    AdminService adminService = new AdminService();
 
     public void AdminMenu(){
 
@@ -32,44 +27,13 @@ public class AdminMenu {
 
         Scanner scanner = new Scanner(System.in);
 
-//        try{
-//            String userInput = scanner.nextLine();
-//
-//            if(Objects.equals(userInput, "1")){
-//                System.out.println(adminService.getCustom("test2@test.com").toString());
-//
-//            }else if (Objects.equals(userInput, "2")){
-//                adminService.getRoom();
-//            }else if (Objects.equals(userInput, "3")){
-//                adminService.getReservations();
-//            }else if (Objects.equals(userInput, "4")){
-//                adminService.addRoom();
-//            }else if (Objects.equals(userInput, "5")){
-//                new MainMenu().MainMenu();
-//            } else {
-//                AdminMenu();
-//            }
-//        }
-//        catch (Exception e){
-//            System.out.println("AdminMenu Exception");
-//            AdminMenu();
-//        }
-//        finally {
-//            scanner.close();
-//        }
-
-
-
-
-
+        try{
             String userInput = scanner.nextLine();
 
             if(Objects.equals(userInput, "1")){
-//                System.out.println(adminService.getCustom("test2@test.com"));
-                System.out.println(customerService.getCustom("test2@test.com"));
-
+                adminService.getAllUser();
             }else if (Objects.equals(userInput, "2")){
-//                adminService.getRoom();
+                adminService.getAllRoom();
             }else if (Objects.equals(userInput, "3")){
 //                adminService.getReservations();
             }else if (Objects.equals(userInput, "4")){
@@ -79,11 +43,23 @@ public class AdminMenu {
             } else {
                 AdminMenu();
             }
-
-
-
-
+        }
+        catch (Exception e){
+            System.out.println("AdminMenu Exception");
+            AdminMenu();
+        }
+        finally {
+            scanner.close();
+        }
 
     }
 
 }
+
+
+
+
+//    private final CustomerService customerService = CustomerService.getCustomerService();
+
+//    AdminService adminService = new AdminService();
+//    CustomerService customerService = new CustomerService();

@@ -7,9 +7,8 @@ import java.util.*;
 
 public class MainMenu{
 
-
-
     public void MainMenu() {
+
         System.out.print("\nHotel Reservation Application\n" +
                 "--------------------------------------------\n" +
                 "1. Find and reserve a room\n" +
@@ -20,6 +19,7 @@ public class MainMenu{
                 "--------------------------------------------\n" +
                 "-------- Please Select Number 1 ~ 5 --------\n");
                 Select();
+
     }
 
     private void Select(){

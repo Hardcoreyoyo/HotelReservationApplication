@@ -1,3 +1,14 @@
+202112272259
+
+build something
+SINGLETON: UserDataBase，RoomDataBase。
+void: getAllUser，getAllRoom。
+
+
+<br>
+<br>
+<br>
+
 202112271921
 
 fucking SINGLETON
