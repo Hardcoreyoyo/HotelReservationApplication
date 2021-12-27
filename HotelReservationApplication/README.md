@@ -1,3 +1,15 @@
+202112271459
+
+Solution:  
+interface must override all void, abstract is not.
+u can override void which is not used empty.
+maybe change package structure to make sense.
+using scanner.close careful
+
+<br>
+<br>
+<br>
+
 202112250136
 
 try to understand How is interface work in big structure.

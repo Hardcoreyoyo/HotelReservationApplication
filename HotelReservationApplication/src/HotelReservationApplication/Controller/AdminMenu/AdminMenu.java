@@ -1,12 +1,14 @@
 package HotelReservationApplication.Controller.AdminMenu;
 
-import HotelReservationApplication.Service.CustomerService.Login;
-
+import HotelReservationApplication.Controller.MainMenu.MainMenu;
+import HotelReservationApplication.Service.AdminService.AdminService;
 import java.util.*;
 
 public class AdminMenu {
 
-    public static void AdminMenu(){
+    AdminService adminService = new AdminService();
+
+    public void AdminMenu(){
 
         System.out.println("1. see all Custom");
         System.out.println("2. see all Room");
@@ -18,24 +20,32 @@ public class AdminMenu {
 
     }
 
-    private static void AdminSelect(){
+    private void AdminSelect() {
 
         Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.nextLine();
 
-        if(Objects.equals(userInput, "1")){
-            Login.Login();
-        }else if (Objects.equals(userInput, "2")){
-            Login.Login();
-        }else if (Objects.equals(userInput, "3")){
+        try{
+            String userInput = scanner.nextLine();
 
-        }else if (Objects.equals(userInput, "4")){
-            AdminMenu.AdminMenu();
-        }else if (Objects.equals(userInput, "5")){
-            scanner.close();
-            System.exit(0);
-        } else {
+            if(Objects.equals(userInput, "1")){
+                adminService.getCustom();
+            }else if (Objects.equals(userInput, "2")){
+                adminService.getRoom();
+            }else if (Objects.equals(userInput, "3")){
+                adminService.getReservations();
+            }else if (Objects.equals(userInput, "4")){
+                adminService.addRoom();
+            }else if (Objects.equals(userInput, "5")){
+                new MainMenu().MainMenu();
+            } else {
+                AdminMenu();
+            }
+        }
+        catch (Exception e){
             AdminMenu();
+        }
+        finally {
+            scanner.close();
         }
 
     }

@@ -2,8 +2,12 @@ package HotelReservationApplication.InterfaceApi;
 
 public interface HotelResource {
 
-    public void Registration();
+    public void Login();
 
-    public void Reservation();
+    public void UserRegisteration();
+
+    public void FindRoom();
+
+    public void CheckRoom();
 
 }

@@ -4,10 +4,12 @@ import HotelReservationApplication.Model.User;
 
 public interface AdminResource {
 
-    public User getUser(User user);
+    public void getCustom();
+
+    public void getRoom();
+
+    public void getReservations();
 
     public void addRoom();
-
-
 
 }
