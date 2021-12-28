@@ -1,8 +1,10 @@
-package HotelReservationApplication.InterfaceApi;
+package HotelReservationApplication.Api;
 
-import HotelReservationApplication.Dao.IRoom;
+import HotelReservationApplication.Model.IRoom;
+import HotelReservationApplication.Model.ReservationModel;
 import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.User;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -14,8 +16,10 @@ public interface AdminResource {
 
     public Collection<Room> getAllRooms();
 
-    public void getReservations();
+    public Collection<ReservationModel> getReservations(String email);
 
     public void addRoom(List<IRoom> rooms);
+
+    public void displayAllReservations();
 
 }

@@ -1,8 +1,12 @@
 package HotelReservationApplication.Service.CustomerService;
 
-import HotelReservationApplication.InterfaceApi.HotelResource;
+import HotelReservationApplication.Api.HotelResource;
 import HotelReservationApplication.DataBase.UserDataBase;
+import HotelReservationApplication.Model.IRoom;
+import HotelReservationApplication.Model.ReservationModel;
 import HotelReservationApplication.Model.User;
+
+import java.util.Date;
 
 public class CustomerService implements HotelResource {
 
@@ -11,11 +15,6 @@ public class CustomerService implements HotelResource {
 
     public static CustomerService getCustomerService(){
         return customerService;
-    }
-
-    @Override
-    public void Login() {
-        System.out.println("Login");
     }
 
     @Override
@@ -34,8 +33,14 @@ public class CustomerService implements HotelResource {
     }
 
     @Override
-    public User getCustom(String email) {
-        return userDataBase.getUser().get(email);
+    public ReservationModel reserveARoom(User user, IRoom room, Date checkInDate, Date checkOutDate) {
+        return null;
     }
+
+    @Override
+    public IRoom getRoom(String roomNumber) {
+        return null;
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package HotelReservationApplication.Dao;
+package HotelReservationApplication.Model;
 
 import HotelReservationApplication.Model.RoomType;
 

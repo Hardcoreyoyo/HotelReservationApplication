@@ -1,12 +1,22 @@
 package HotelReservationApplication.Controller.MainMenu;
 
 import HotelReservationApplication.Controller.AdminMenu.AdminMenu;
+import HotelReservationApplication.Service.AdminService.AdminService;
+import HotelReservationApplication.Service.ReservationService.ReservationService;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 import java.util.Scanner;
 
 
 public class MainMenu{
+
+    private static final ReservationService reservationService = ReservationService.getReservationService();
+    private static final AdminService adminService = AdminService.getAdminService();
+
+
 
     public void MainMenu() {
 
@@ -23,7 +33,7 @@ public class MainMenu{
 
     }
 
-    private void Select(){
+    private void Select() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -31,7 +41,7 @@ public class MainMenu{
             String userInput = scanner.nextLine();
 
             if(Objects.equals(userInput, "1")){
-//                customerService.FindRoom();
+                FindAndReserveARoom();
             }else if (Objects.equals(userInput, "2")){
 //                customerService.CheckRoom();
             }else if (Objects.equals(userInput, "3")){
@@ -51,6 +61,23 @@ public class MainMenu{
         finally {
             scanner.close();
         }
+
+    }
+
+    private void FindAndReserveARoom() throws ParseException {
+
+        SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
+
+        Date dateIn = ft.parse("08/11/2021");
+        Date dateOut = ft.parse("08/13/2021");
+
+        reservationService.reserveARoom(
+                adminService.getUser("test2@test.com"),
+                reservationService.getRoom("2"),
+                dateIn,
+                dateOut);
+
+        MainMenu();
 
     }
 

@@ -1,7 +1,5 @@
 package HotelReservationApplication.Model;
 
-import HotelReservationApplication.Dao.IRoom;
-
 public class Room implements IRoom {
 
     private final Double room_price;

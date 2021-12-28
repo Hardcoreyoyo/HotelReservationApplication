@@ -1,7 +1,7 @@
 package HotelReservationApplication.Controller.AdminMenu;
 
 import HotelReservationApplication.Controller.MainMenu.MainMenu;
-import HotelReservationApplication.Dao.IRoom;
+import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.RoomType;
 import HotelReservationApplication.Service.AdminService.AdminService;
@@ -38,7 +38,7 @@ public class AdminMenu {
             }else if (Objects.equals(userInput, "2")){
                 ShowAllRooms();
             }else if (Objects.equals(userInput, "3")){
-//                adminService.getReservations();
+                ShowAllReservations();
             }else if (Objects.equals(userInput, "4")){
                 AddNewRoom();
             }else if (Objects.equals(userInput, "5")){
@@ -70,6 +70,14 @@ public class AdminMenu {
 
     }
 
+    private void ShowAllReservations(){
+
+        System.out.println("---------------- All Reservations Data ----------------\n");
+        adminService.displayAllReservations();
+        new AdminMenu().AdminMenu();
+
+    }
+
     private void ShowAllRooms(){
 
         System.out.println("---------------- All Room Data ----------------\n");
@@ -84,6 +92,7 @@ public class AdminMenu {
     }
 
     private void AddNewRoom(){
+
         Room room = new Room(600.0, "6", RoomType.Double);
 
         List<IRoom> list = new ArrayList<>();
@@ -94,5 +103,7 @@ public class AdminMenu {
 
         new AdminMenu().AdminMenu();
     }
+
+
 
 }
