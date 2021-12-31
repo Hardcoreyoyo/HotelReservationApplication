@@ -4,7 +4,6 @@ import HotelReservationApplication.DataBase.ReservationDataBase;
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.DataBase.RoomDataBase;
 import HotelReservationApplication.DataBase.UserDataBase;
-import HotelReservationApplication.Api.AdminResource;
 import HotelReservationApplication.Model.ReservationModel;
 import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.User;
@@ -12,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 
-public class AdminService implements AdminResource {
+public class AdminService {
 
     private static final AdminService adminService = new AdminService();
     private static final UserDataBase userDataBase = UserDataBase.getUserDataBase();
@@ -24,32 +23,26 @@ public class AdminService implements AdminResource {
         return adminService;
     }
 
-    @Override
     public User getUser(String email) {
         return userDataBase.getUser().get(email);
     }
 
-    @Override
     public Collection<User> getAllUsers() {
         return userDataBase.getUser().values();
     }
 
-    @Override
     public Collection<IRoom> getAllRooms() {
         return roomDataBase.getRoom().values();
     }
 
-    @Override
     public Collection<ReservationModel> getReservations(String email) {
         return reservationDataBase.getReservationModelMap().get(email);
     }
 
-    @Override
     public void addRoom(List<IRoom> rooms){
         rooms.forEach(iRoom -> roomDataBase.getRoom().put(iRoom.getRoom_number(), new Room(iRoom.getRoom_price(), iRoom.getRoom_number(), iRoom.getRoomType())));
     }
 
-    @Override
     public void displayAllReservations() {
 
         if(reservationDataBase.getReservationModelMap().isEmpty()){

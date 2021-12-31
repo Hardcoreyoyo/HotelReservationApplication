@@ -1,24 +1,43 @@
 package HotelReservationApplication.Api;
 
 import HotelReservationApplication.Model.IRoom;
-import HotelReservationApplication.Model.ReservationModel;
 import HotelReservationApplication.Model.User;
+import HotelReservationApplication.Service.AdminService.AdminService;
+import HotelReservationApplication.Service.CustomerService.CustomerService;
+import HotelReservationApplication.Service.ReservationService.ReservationService;
 
 import java.util.Collection;
 import java.util.List;
 
-public interface AdminResource {
+public class AdminResource {
 
-    public User getUser(String email);
+    private static final AdminResource adminResource = new AdminResource();
+    private static final AdminService adminService = AdminService.getAdminService();
+    private static final ReservationService reservationService = ReservationService.getReservationService();
+    private static final CustomerService customerService = CustomerService.getCustomerService();
 
-    public Collection<User> getAllUsers();
+    public static AdminResource getAdminResource(){
+        return adminResource;
+    }
 
-    public Collection<IRoom> getAllRooms();
+    public User getUser(String email){
+        return adminService.getUser(email);
+    }
 
-    public Collection<ReservationModel> getReservations(String email);
+    public Collection<User> getAllUser(){
+        return adminService.getAllUsers();
+    }
 
-    public void addRoom(List<IRoom> rooms);
+    public void addRoom(List<IRoom> rooms){
+        adminService.addRoom(rooms);
+    }
 
-    public void displayAllReservations();
+    public Collection<IRoom> getAllRooms(){
+        return adminService.getAllRooms();
+    }
+
+    public void displayAllReservations(){
+        adminService.displayAllReservations();
+    }
 
 }

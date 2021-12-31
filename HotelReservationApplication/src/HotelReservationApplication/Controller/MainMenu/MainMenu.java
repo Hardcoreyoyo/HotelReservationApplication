@@ -1,5 +1,6 @@
 package HotelReservationApplication.Controller.MainMenu;
 
+import HotelReservationApplication.Api.HotelResource;
 import HotelReservationApplication.Controller.AdminMenu.AdminMenu;
 import HotelReservationApplication.Service.AdminService.AdminService;
 import HotelReservationApplication.Service.ReservationService.ReservationService;
@@ -13,10 +14,7 @@ import java.util.Scanner;
 
 public class MainMenu{
 
-    private static final ReservationService reservationService = ReservationService.getReservationService();
-    private static final AdminService adminService = AdminService.getAdminService();
-
-
+    private static final HotelResource hotelResource = HotelResource.getHotelResource();
 
     public void MainMenu() {
 
@@ -43,9 +41,9 @@ public class MainMenu{
             if(Objects.equals(userInput, "1")){
                 FindAndReserveARoom();
             }else if (Objects.equals(userInput, "2")){
-//                customerService.CheckRoom();
+
             }else if (Objects.equals(userInput, "3")){
-//                customerService.UserRegisteration();
+
             }else if (Objects.equals(userInput, "4")){
                 new AdminMenu().AdminMenu();
             }else if (Objects.equals(userInput, "5")){
@@ -77,7 +75,7 @@ public class MainMenu{
             } else if(dateIn == null && dateOut == null){
                 System.out.println("---- Date is empty ----");
             } else {
-                reservationService.FindRooms(dateIn, dateOut).forEach(System.out::println);
+                hotelResource.findARoom(dateIn, dateOut).forEach(System.out::println);
             }
 
         } catch (ParseException e){

@@ -1,5 +1,7 @@
 package HotelReservationApplication.Controller.AdminMenu;
 
+import HotelReservationApplication.Api.AdminResource;
+import HotelReservationApplication.Api.HotelResource;
 import HotelReservationApplication.Controller.MainMenu.MainMenu;
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.Room;
@@ -9,7 +11,7 @@ import java.util.*;
 
 public class AdminMenu {
 
-    private static final AdminService adminService = AdminService.getAdminService();
+    private static final AdminResource adminResource = AdminResource.getAdminResource();
 
     public void AdminMenu(){
 
@@ -61,10 +63,10 @@ public class AdminMenu {
 
         System.out.println("---------------- All User Data ----------------\n");
 
-        if (adminService.getAllUsers().isEmpty()) {
+        if (adminResource.getAllUser().isEmpty()) {
             System.out.println("---------------- No User found ! ----------------\n");
         } else {
-            adminService.getAllUsers().forEach(System.out::println);
+            adminResource.getAllUser().forEach(System.out::println);
         }
         new AdminMenu().AdminMenu();
 
@@ -73,7 +75,7 @@ public class AdminMenu {
     private void ShowAllReservations(){
 
         System.out.println("---------------- All Reservations Data ----------------\n");
-        adminService.displayAllReservations();
+        adminResource.displayAllReservations();
         new AdminMenu().AdminMenu();
 
     }
@@ -82,10 +84,10 @@ public class AdminMenu {
 
         System.out.println("---------------- All Room Data ----------------\n");
 
-        if (adminService.getAllRooms().isEmpty()) {
+        if (adminResource.getAllRooms().isEmpty()) {
             System.out.println("---------------- No Room found ! ----------------\n");
         } else {
-            adminService.getAllRooms().forEach(System.out::println);
+            adminResource.getAllRooms().forEach(System.out::println);
         }
         new AdminMenu().AdminMenu();
 
@@ -97,7 +99,7 @@ public class AdminMenu {
 
         List<IRoom> list = new ArrayList<>();
         list.add(room);
-        adminService.addRoom(list);
+        adminResource.addRoom(list);
 
         System.out.println("\n---------------- Add Room successful ----------------\n" + "\n");
 

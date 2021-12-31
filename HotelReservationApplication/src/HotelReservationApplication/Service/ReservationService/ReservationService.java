@@ -3,16 +3,14 @@ package HotelReservationApplication.Service.ReservationService;
 import HotelReservationApplication.DataBase.ReservationDataBase;
 import HotelReservationApplication.DataBase.RoomDataBase;
 import HotelReservationApplication.DataBase.UserDataBase;
-import HotelReservationApplication.Api.HotelResource;
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.ReservationModel;
 import HotelReservationApplication.Model.User;
 import HotelReservationApplication.Service.AdminService.AdminService;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class ReservationService implements HotelResource {
+public class ReservationService {
 
     private static final ReservationService reservationService = new ReservationService();
     private static final AdminService adminService = AdminService.getAdminService();
@@ -80,7 +78,6 @@ public class ReservationService implements HotelResource {
         return FilterReservedRoomList;
     }
 
-    @Override
     public ReservationModel reserveARoom(User user, IRoom room, Date checkInDate, Date checkOutDate) {
 
         ReservationModel ReceiveReservationModel =
@@ -106,36 +103,19 @@ public class ReservationService implements HotelResource {
 
     }
 
-    private Collection<ReservationModel> getAllReservation(){
-
-        Collection<ReservationModel> getAllReservation = new LinkedList<>();
-
-        for (Collection<ReservationModel> reservationModel:reservationDataBase.getReservationModelMap().values()) {
-            getAllReservation.addAll(reservationModel);
-        }
-
-        return getAllReservation;
-    }
-
-    @Override
     public IRoom getRoom(String roomNumber) {
         return roomDataBase.getRoom().get(roomNumber);
     }
 
-
-    @Override
-    public void FindRoom() {
-
-    }
-
-    @Override
-    public void CheckRoom() {
-
-    }
-
-    @Override
-    public void UserRegisteration(String first_name, String last_name, String email) {}
-
-
+//    private Collection<ReservationModel> getAllReservation(){
+//
+//        Collection<ReservationModel> getAllReservation = new LinkedList<>();
+//
+//        for (Collection<ReservationModel> reservationModel:reservationDataBase.getReservationModelMap().values()) {
+//            getAllReservation.addAll(reservationModel);
+//        }
+//
+//        return getAllReservation;
+//    }
 
 }
