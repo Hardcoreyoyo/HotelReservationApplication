@@ -64,20 +64,55 @@ public class MainMenu{
 
     }
 
-    private void FindAndReserveARoom() throws ParseException {
+    private void FindAndReserveARoom(){
 
         SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
 
-        Date dateIn = ft.parse("08/11/2021");
-        Date dateOut = ft.parse("08/13/2021");
+        try{
+            Date dateIn = ft.parse("08/08/2021");
+            Date dateOut = ft.parse("08/10/2021");
 
-        reservationService.reserveARoom(
-                adminService.getUser("test2@test.com"),
-                reservationService.getRoom("2"),
-                dateIn,
-                dateOut);
+            if(dateIn.getTime() >= dateOut.getTime()){
+                System.out.println("---- Wrong Date Order----");
+            } else if(dateIn == null && dateOut == null){
+                System.out.println("---- Date is empty ----");
+            } else {
+                reservationService.FindRooms(dateIn, dateOut).forEach(System.out::println);
+            }
+
+        } catch (ParseException e){
+            System.out.println("---- Wrong Date Format ----");
+        } catch (Exception e){
+//            MainMenu();
+        }
 
         MainMenu();
+
+//        SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
+//
+//        try{
+//            Date dateIn = ft.parse("08/11/2021");
+//            Date dateOut = ft.parse("08/13/2021");
+//
+//            if(dateIn.getTime() >= dateOut.getTime()){
+//                System.out.println("---- Wrong Date Order----");
+//            } else if(dateIn != null && dateOut != null){
+//                System.out.println("---- Date is empty ----");
+//            } else {
+//                reservationService.reserveARoom(
+//                        adminService.getUser("test2@test.com"),
+//                        reservationService.getRoom("2"),
+//                        dateIn,
+//                        dateOut);
+//            }
+//
+//        } catch (ParseException e){
+//            System.out.println("---- Wrong Date Format ----");
+//        } catch (Exception e){
+////            MainMenu();
+//        }
+//
+//        MainMenu();
 
     }
 

@@ -16,8 +16,36 @@ public class ReservationModel {
         this.ckeck_out_date = ckeck_out_date;
     }
 
-    public IRoom getRoom() {
-        return this.iRoom;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public IRoom getiRoom() {
+        return iRoom;
+    }
+
+    public void setiRoom(IRoom iRoom) {
+        this.iRoom = iRoom;
+    }
+
+    public Date getCkeck_in_date() {
+        return ckeck_in_date;
+    }
+
+    public void setCkeck_in_date(Date ckeck_in_date) {
+        this.ckeck_in_date = ckeck_in_date;
+    }
+
+    public Date getCkeck_out_date() {
+        return ckeck_out_date;
+    }
+
+    public void setCkeck_out_date(Date ckeck_out_date) {
+        this.ckeck_out_date = ckeck_out_date;
     }
 
     @Override
@@ -38,4 +66,5 @@ public class ReservationModel {
                "-----------------------------------------------\n" +
                "\n" + "\n" + "\n";
     }
+
 }

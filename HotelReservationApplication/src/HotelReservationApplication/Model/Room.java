@@ -1,5 +1,7 @@
 package HotelReservationApplication.Model;
 
+import java.util.Objects;
+
 public class Room implements IRoom {
 
     private final Double room_price;
@@ -41,5 +43,17 @@ public class Room implements IRoom {
                 "\n";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return room_price.equals(room.room_price) && room_number.equals(room.room_number) && roomType == room.roomType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(room_price, room_number, roomType);
+    }
 
 }

@@ -6,9 +6,12 @@ import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.RoomType;
 import HotelReservationApplication.Service.AdminService.AdminService;
 import HotelReservationApplication.Service.CustomerService.CustomerService;
+import HotelReservationApplication.Service.ReservationService.ReservationService;
 
-import java.text.ParseException;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -17,6 +20,7 @@ public class Main {
 
         CustomerService customerService = new CustomerService();
         AdminService adminService = new AdminService();
+        ReservationService reservationService = new ReservationService();
 
         customerService.UserRegisteration("first1", "second1", "test1@test.com");
         customerService.UserRegisteration("first2", "second2", "test2@test.com");
@@ -33,7 +37,29 @@ public class Main {
         iRooms.add(new Room(350.0, "5", RoomType.Double));
         adminService.addRoom(iRooms);
 
+        ReservedInject(reservationService, adminService);
+
         new MainMenu().MainMenu();
+    }
+
+    private static void ReservedInject(ReservationService reservationService,
+                                       AdminService adminService) {
+
+            SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
+
+            try{
+                Date dateIn = ft.parse("08/11/2021");
+                Date dateOut = ft.parse("08/13/2021");
+
+                reservationService.reserveARoom(
+                        adminService.getUser("test2@test.com"),
+                        reservationService.getRoom("2"),
+                        dateIn,
+                        dateOut);
+            } catch (Exception e){
+                System.out.println("---------------- ReservedInject Date Wrong ! ----------------\n");
+
+            }
 
     }
 

@@ -2,7 +2,6 @@ package HotelReservationApplication.Api;
 
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.ReservationModel;
-import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.User;
 
 import java.util.Collection;
@@ -14,7 +13,7 @@ public interface AdminResource {
 
     public Collection<User> getAllUsers();
 
-    public Collection<Room> getAllRooms();
+    public Collection<IRoom> getAllRooms();
 
     public Collection<ReservationModel> getReservations(String email);
 

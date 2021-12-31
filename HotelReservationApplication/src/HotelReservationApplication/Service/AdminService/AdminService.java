@@ -10,7 +10,6 @@ import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.User;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class AdminService implements AdminResource {
@@ -36,7 +35,7 @@ public class AdminService implements AdminResource {
     }
 
     @Override
-    public Collection<Room> getAllRooms() {
+    public Collection<IRoom> getAllRooms() {
         return roomDataBase.getRoom().values();
     }
 
