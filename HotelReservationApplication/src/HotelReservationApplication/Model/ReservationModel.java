@@ -1,6 +1,7 @@
 package HotelReservationApplication.Model;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ReservationModel {
 
@@ -65,6 +66,19 @@ public class ReservationModel {
                "\n" +
                "-----------------------------------------------\n" +
                "\n" + "\n" + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReservationModel that = (ReservationModel) o;
+        return user.equals(that.user) && iRoom.equals(that.iRoom) && ckeck_in_date.equals(that.ckeck_in_date) && ckeck_out_date.equals(that.ckeck_out_date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user, iRoom, ckeck_in_date, ckeck_out_date);
     }
 
 }

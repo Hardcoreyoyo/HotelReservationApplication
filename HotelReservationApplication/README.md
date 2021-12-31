@@ -1,5 +1,16 @@
 202112311709
 
+study for hashCode ， equals  
+think about Algorithm optimize for intersection and union
+conclusion:  
+Date is not bigger enough to use Algorithm optimize
+
+<br>
+<br>
+<br>
+
+202112311709
+
 Build something
 void: FindRooms，CheckDateRange
 

@@ -4,6 +4,7 @@ import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.Room;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class RoomDataBase {
 
@@ -23,6 +24,19 @@ public class RoomDataBase {
         return "UserDataBase{" +
                 "user=" + room +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoomDataBase that = (RoomDataBase) o;
+        return room.equals(that.room);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(room);
     }
 
 }

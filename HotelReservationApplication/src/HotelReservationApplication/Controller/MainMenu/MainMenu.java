@@ -69,8 +69,8 @@ public class MainMenu{
         SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
 
         try{
-            Date dateIn = ft.parse("08/08/2021");
-            Date dateOut = ft.parse("08/10/2021");
+            Date dateIn = ft.parse("08/02/2021");
+            Date dateOut = ft.parse("08/07/2021");
 
             if(dateIn.getTime() >= dateOut.getTime()){
                 System.out.println("---- Wrong Date Order----");
@@ -91,7 +91,7 @@ public class MainMenu{
 //        SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
 //
 //        try{
-//            Date dateIn = ft.parse("08/11/2021");
+//            Date dateIn = ft.parse("08/10/2021");
 //            Date dateOut = ft.parse("08/13/2021");
 //
 //            if(dateIn.getTime() >= dateOut.getTime()){

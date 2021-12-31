@@ -3,6 +3,7 @@ package HotelReservationApplication.DataBase;
 import HotelReservationApplication.Model.User;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class UserDataBase {
 
@@ -22,6 +23,19 @@ public class UserDataBase {
         return "UserDataBase{" +
                 "user=" + user +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDataBase that = (UserDataBase) o;
+        return user.equals(that.user);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user);
     }
 
 }

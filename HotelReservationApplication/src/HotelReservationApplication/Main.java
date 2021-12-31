@@ -48,7 +48,7 @@ public class Main {
             SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
 
             try{
-                Date dateIn = ft.parse("08/11/2021");
+                Date dateIn = ft.parse("08/10/2021");
                 Date dateOut = ft.parse("08/13/2021");
 
                 reservationService.reserveARoom(

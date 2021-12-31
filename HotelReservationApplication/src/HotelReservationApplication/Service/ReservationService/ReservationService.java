@@ -30,7 +30,7 @@ public class ReservationService implements HotelResource {
             return roomDataBase.getRoom().values();
 
         } else {
-            return CheckDateRange(checkInDate, checkOutDate);
+            return FilterReservedRoom(CheckDateRange(checkInDate, checkOutDate));
         }
 
     }
@@ -65,16 +65,20 @@ public class ReservationService implements HotelResource {
             }
         }
 
-        return roomDataBase.getRoom().values().stream().filter(room ->
-                ReservedRoom.stream().noneMatch(reservedRooms ->
-                        reservedRooms.equals(room))).collect(Collectors.toList());
+        return ReservedRoom;
     }
 
-//    private Collection<IRoom> FilterReserveRoom(Collection<IRoom> CheckedRoomRange){
-//        return roomDataBase.getRoom().values().stream().filter(room ->
-//                CheckedRoomRange.stream().noneMatch(reservedRooms ->
-//                        reservedRooms.equals(room))).collect(Collectors.toList());
-//    }
+    private Collection<IRoom> FilterReservedRoom(Collection<IRoom> CheckedRoomRange){
+
+        List<IRoom> FilterReservedRoomList = new LinkedList<>();
+        for (IRoom iRoom :roomDataBase.getRoom().values()) {
+            if(!CheckedRoomRange.contains(iRoom)){
+                FilterReservedRoomList.add(iRoom);
+            }
+        }
+
+        return FilterReservedRoomList;
+    }
 
     @Override
     public ReservationModel reserveARoom(User user, IRoom room, Date checkInDate, Date checkOutDate) {
