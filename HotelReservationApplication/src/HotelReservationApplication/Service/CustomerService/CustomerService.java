@@ -1,11 +1,7 @@
 package HotelReservationApplication.Service.CustomerService;
 
 import HotelReservationApplication.DataBase.UserDataBase;
-import HotelReservationApplication.Model.IRoom;
-import HotelReservationApplication.Model.ReservationModel;
 import HotelReservationApplication.Model.User;
-
-import java.util.Date;
 
 public class CustomerService {
 

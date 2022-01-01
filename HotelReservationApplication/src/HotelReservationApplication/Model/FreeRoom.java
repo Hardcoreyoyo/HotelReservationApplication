@@ -2,11 +2,16 @@ package HotelReservationApplication.Model;
 
 public class FreeRoom extends Room {
 
-    private Double room_price;
-
     public FreeRoom(Double room_price, String room_number, RoomType roomType) {
-        super(room_price, room_number, roomType);
-        this.room_price = 0.0;
+        super(0.0, room_number, roomType);
+    }
+
+    @Override
+    public String toString() {
+        return "\n" +
+                "-------- Free Room --------" + "\n" +
+                super.toString() +
+                "\n";
     }
 
 }

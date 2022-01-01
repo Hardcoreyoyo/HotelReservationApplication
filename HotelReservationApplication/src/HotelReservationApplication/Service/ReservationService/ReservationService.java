@@ -2,21 +2,21 @@ package HotelReservationApplication.Service.ReservationService;
 
 import HotelReservationApplication.DataBase.ReservationDataBase;
 import HotelReservationApplication.DataBase.RoomDataBase;
-import HotelReservationApplication.DataBase.UserDataBase;
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.ReservationModel;
 import HotelReservationApplication.Model.User;
 import HotelReservationApplication.Service.AdminService.AdminService;
-
 import java.util.*;
+
 
 public class ReservationService {
 
     private static final ReservationService reservationService = new ReservationService();
     private static final AdminService adminService = AdminService.getAdminService();
-    private static final UserDataBase userDataBase = UserDataBase.getUserDataBase();
     private static final RoomDataBase roomDataBase = RoomDataBase.getRoomDataBase();
     private static final ReservationDataBase reservationDataBase = ReservationDataBase.getReservationDataBase();
+    private static final int ADD_RECOMMENDED_DAYS = 7;
+
 
     public static ReservationService getReservationService(){
         return reservationService;
@@ -69,6 +69,7 @@ public class ReservationService {
     private Collection<IRoom> FilterReservedRoom(Collection<IRoom> CheckedRoomRange){
 
         List<IRoom> FilterReservedRoomList = new LinkedList<>();
+
         for (IRoom iRoom :roomDataBase.getRoom().values()) {
             if(!CheckedRoomRange.contains(iRoom)){
                 FilterReservedRoomList.add(iRoom);
@@ -83,7 +84,7 @@ public class ReservationService {
         ReservationModel ReceiveReservationModel =
                 new ReservationModel(user, room, checkInDate, checkOutDate);
 
-        if(adminService.getReservations(user.getEmail()) == null){
+        if(adminService.getUserReservations(user.getEmail()) == null){
 
             List<ReservationModel> reserveARoomList = new LinkedList<>();
 
@@ -103,19 +104,25 @@ public class ReservationService {
 
     }
 
-    public IRoom getRoom(String roomNumber) {
+    public IRoom getARoom(String roomNumber) {
         return roomDataBase.getRoom().get(roomNumber);
     }
 
-//    private Collection<ReservationModel> getAllReservation(){
-//
-//        Collection<ReservationModel> getAllReservation = new LinkedList<>();
-//
-//        for (Collection<ReservationModel> reservationModel:reservationDataBase.getReservationModelMap().values()) {
-//            getAllReservation.addAll(reservationModel);
-//        }
-//
-//        return getAllReservation;
-//    }
+    public Date RecommandDate(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, ADD_RECOMMENDED_DAYS);
+
+        return calendar.getTime();
+    }
+
+    public Collection<IRoom> getRecommandRoom(Date checkInDate, Date checkOutDate){
+        return FilterReservedRoom(
+                CheckDateRange(
+                        RecommandDate(checkInDate),
+                        RecommandDate(checkOutDate)));
+    }
+
+
 
 }

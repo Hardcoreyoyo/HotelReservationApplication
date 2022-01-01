@@ -2,15 +2,10 @@ package HotelReservationApplication.Controller.MainMenu;
 
 import HotelReservationApplication.Api.HotelResource;
 import HotelReservationApplication.Controller.AdminMenu.AdminMenu;
-import HotelReservationApplication.Service.AdminService.AdminService;
-import HotelReservationApplication.Service.ReservationService.ReservationService;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Objects;
 import java.util.Scanner;
-
 
 public class MainMenu{
 
@@ -27,28 +22,24 @@ public class MainMenu{
                 "5. Exit\n" +
                 "--------------------------------------------\n" +
                 "-------- Please Select Number 1 ~ 5 --------\n");
-                Select();
+        MainMenuSelect();
 
     }
 
-    private void Select() {
+    private void MainMenuSelect() {
 
-        Scanner scanner = new Scanner(System.in);
+        String InputString = new Scanner(System.in).nextLine();
 
         try{
-            String userInput = scanner.nextLine();
-
-            if(Objects.equals(userInput, "1")){
-                FindAndReserveARoom();
-            }else if (Objects.equals(userInput, "2")){
-
-            }else if (Objects.equals(userInput, "3")){
-
-            }else if (Objects.equals(userInput, "4")){
-                new AdminMenu().AdminMenu();
-            }else if (Objects.equals(userInput, "5")){
-                System.out.println("---- Close Hotel Reservation System ----");
-                System.exit(0);
+            if (InputString.length() == 1) {
+                switch (InputString) {
+                    case "1" -> FindAndReserveARoom();
+                    case "2" -> UserCheckReservation();
+                    case "3" -> UserRegisteration();
+                    case "4" -> new AdminMenu().AdminMenu();
+                    case "5" -> Exit();
+                    default -> MainMenu();
+                }
             } else {
                 MainMenu();
             }
@@ -56,62 +47,103 @@ public class MainMenu{
         catch (Exception e){
             MainMenu();
         }
-        finally {
-            scanner.close();
-        }
 
+    }
+
+    private void Exit(){
+        System.out.println("---- Close Hotel Reservation System ----");
+        System.exit(0);
     }
 
     private void FindAndReserveARoom(){
 
+        Scanner scanner = new Scanner(System.in);
         SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
 
         try{
-            Date dateIn = ft.parse("08/02/2021");
-            Date dateOut = ft.parse("08/07/2021");
+            System.out.println("---- checkInDate ----");
+            Date dateIn = ft.parse(scanner.nextLine());
 
-            if(dateIn.getTime() >= dateOut.getTime()){
+            System.out.println("---- checkOutDate ----");
+            Date dateOut = ft.parse(scanner.nextLine());
+
+            if(dateIn.getTime() < dateOut.getTime()) {
+
+                    if (hotelResource.findARoom(dateIn, dateOut).isEmpty()) {
+
+                        if (hotelResource.RecommandRoom(dateIn, dateOut).isEmpty()) {
+                            System.out.println("---- No Room Found ! ----");
+                        }else {
+                            hotelResource.RecommandRoom(dateIn, dateOut).forEach(System.out::println);
+                        }
+
+                    } else {
+                        hotelResource.findARoom(dateIn, dateOut).forEach(System.out::println);
+                    }
+
+            }else {
                 System.out.println("---- Wrong Date Order----");
-            } else if(dateIn == null && dateOut == null){
-                System.out.println("---- Date is empty ----");
-            } else {
-                hotelResource.findARoom(dateIn, dateOut).forEach(System.out::println);
             }
 
         } catch (ParseException e){
             System.out.println("---- Wrong Date Format ----");
-        } catch (Exception e){
-//            MainMenu();
+        } catch (Exception ignored){
         }
 
         MainMenu();
 
-//        SimpleDateFormat ft = new SimpleDateFormat ("MM/dd/yyyy");
-//
-//        try{
+
 //            Date dateIn = ft.parse("08/10/2021");
 //            Date dateOut = ft.parse("08/13/2021");
-//
-//            if(dateIn.getTime() >= dateOut.getTime()){
-//                System.out.println("---- Wrong Date Order----");
-//            } else if(dateIn != null && dateOut != null){
-//                System.out.println("---- Date is empty ----");
-//            } else {
-//                reservationService.reserveARoom(
-//                        adminService.getUser("test2@test.com"),
-//                        reservationService.getRoom("2"),
-//                        dateIn,
-//                        dateOut);
-//            }
-//
-//        } catch (ParseException e){
-//            System.out.println("---- Wrong Date Format ----");
-//        } catch (Exception e){
-////            MainMenu();
-//        }
-//
-//        MainMenu();
+
+//            Date dateIn = ft.parse("08/03/2021");
+//            Date dateOut = ft.parse("08/20/2021");
 
     }
+
+    private void UserCheckReservation(){
+
+    }
+
+    private void UserRegisteration(){
+
+    }
+
+
+
+    //    private void Select() {
+//
+//        Scanner scanner = new Scanner(System.in);
+//
+//        try{
+//            String userInput = scanner.nextLine();
+//
+//            if(Objects.equals(userInput, "1")){
+//                FindAndReserveARoom();
+//            }else if (Objects.equals(userInput, "2")){
+//
+//            }else if (Objects.equals(userInput, "3")){
+//
+//            }else if (Objects.equals(userInput, "4")){
+//                new AdminMenu().AdminMenu();
+//            }else if (Objects.equals(userInput, "5")){
+//                System.out.println("---- Close Hotel Reservation System ----");
+//                System.exit(0);
+//            } else {
+//                MainMenu();
+//            }
+//        }
+//        catch (Exception e){
+//            MainMenu();
+//        }
+//        finally {
+//            scanner.close();
+//        }
+//
+//    }
+
+
+
+
 
 }

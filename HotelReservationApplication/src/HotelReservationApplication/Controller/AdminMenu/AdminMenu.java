@@ -1,12 +1,10 @@
 package HotelReservationApplication.Controller.AdminMenu;
 
 import HotelReservationApplication.Api.AdminResource;
-import HotelReservationApplication.Api.HotelResource;
 import HotelReservationApplication.Controller.MainMenu.MainMenu;
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.Room;
 import HotelReservationApplication.Model.RoomType;
-import HotelReservationApplication.Service.AdminService.AdminService;
 import java.util.*;
 
 public class AdminMenu {
@@ -24,37 +22,30 @@ public class AdminMenu {
                 "5. Back to Main Menu\n" +
                 "--------------------------------------------\n" +
                 "-------- Please Select Number 1 ~ 5 --------\n");
-        AdminSelect();
+        AdminMenuSelect();
 
     }
 
-    private void AdminSelect() {
+    private void AdminMenuSelect() {
 
-        Scanner scanner = new Scanner(System.in);
+        String InputString = new Scanner(System.in).nextLine();
 
         try{
-            String userInput = scanner.nextLine();
-
-            if(Objects.equals(userInput, "1")){
-                ShowAllUsers();
-            }else if (Objects.equals(userInput, "2")){
-                ShowAllRooms();
-            }else if (Objects.equals(userInput, "3")){
-                ShowAllReservations();
-            }else if (Objects.equals(userInput, "4")){
-                AddNewRoom();
-            }else if (Objects.equals(userInput, "5")){
-                new MainMenu().MainMenu();
+            if (InputString.length() == 1) {
+                switch (InputString) {
+                    case "1" -> ShowAllUsers();
+                    case "2" -> ShowAllRooms();
+                    case "3" -> ShowAllReservations();
+                    case "4" -> AddNewRoom();
+                    case "5" -> new MainMenu().MainMenu();
+                    default -> AdminMenu();
+                }
             } else {
                 AdminMenu();
             }
         }
         catch (Exception e){
-            System.out.println("AdminMenu Exception");
             AdminMenu();
-        }
-        finally {
-            scanner.close();
         }
 
     }

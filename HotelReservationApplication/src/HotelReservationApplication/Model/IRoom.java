@@ -1,7 +1,5 @@
 package HotelReservationApplication.Model;
 
-import HotelReservationApplication.Model.RoomType;
-
 public interface IRoom {
 
     public String getRoom_number();

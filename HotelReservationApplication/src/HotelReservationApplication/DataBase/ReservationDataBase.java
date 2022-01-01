@@ -1,7 +1,6 @@
 package HotelReservationApplication.DataBase;
 
 import HotelReservationApplication.Model.ReservationModel;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;

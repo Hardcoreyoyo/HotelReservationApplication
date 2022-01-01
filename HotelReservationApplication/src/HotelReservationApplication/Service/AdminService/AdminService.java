@@ -10,14 +10,12 @@ import HotelReservationApplication.Model.User;
 import java.util.Collection;
 import java.util.List;
 
-
 public class AdminService {
 
     private static final AdminService adminService = new AdminService();
     private static final UserDataBase userDataBase = UserDataBase.getUserDataBase();
     private static final RoomDataBase roomDataBase = RoomDataBase.getRoomDataBase();
     private static final ReservationDataBase reservationDataBase = ReservationDataBase.getReservationDataBase();
-
 
     public static AdminService getAdminService(){
         return adminService;
@@ -35,18 +33,24 @@ public class AdminService {
         return roomDataBase.getRoom().values();
     }
 
-    public Collection<ReservationModel> getReservations(String email) {
+    public Collection<ReservationModel> getUserReservations(String email) {
         return reservationDataBase.getReservationModelMap().get(email);
     }
 
     public void addRoom(List<IRoom> rooms){
-        rooms.forEach(iRoom -> roomDataBase.getRoom().put(iRoom.getRoom_number(), new Room(iRoom.getRoom_price(), iRoom.getRoom_number(), iRoom.getRoomType())));
+        rooms.forEach(iRoom ->
+                roomDataBase.getRoom().put(
+                        iRoom.getRoom_number(),
+                        new Room(iRoom.getRoom_price(),
+                                iRoom.getRoom_number(),
+                                iRoom.getRoomType())));
     }
 
-    public void displayAllReservations() {
+    public void printAllReservation() {
 
         if(reservationDataBase.getReservationModelMap().isEmpty()){
-            System.out.println("---------------- No Reservations found ! ----------------\n");
+            System.out.println(
+                    "---------------- No Reservations found ! ----------------\n");
         }
 
         reservationDataBase.getReservationModelMap().values().forEach(reservationModels ->

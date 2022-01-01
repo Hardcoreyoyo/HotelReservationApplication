@@ -2,6 +2,7 @@ package HotelReservationApplication.Api;
 
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.ReservationModel;
+import HotelReservationApplication.Model.User;
 import HotelReservationApplication.Service.AdminService.AdminService;
 import HotelReservationApplication.Service.CustomerService.CustomerService;
 import HotelReservationApplication.Service.ReservationService.ReservationService;
@@ -29,11 +30,23 @@ public class HotelResource {
     }
 
     public IRoom getRoom(String roomNumber){
-        return reservationService.getRoom(roomNumber);
+        return reservationService.getARoom(roomNumber);
     }
 
     public void createACustomer(String first_name, String last_name, String email){
         customerService.UserRegisteration(first_name, last_name, email);
+    }
+
+    public User getUser(String email){
+        return adminService.getUser(email);
+    }
+
+    public Collection<ReservationModel> getUserReservations(String email){
+        return adminService.getUserReservations(email);
+    }
+
+    public Collection<IRoom> RecommandRoom(Date checkIn, Date checkOut){
+        return reservationService.getRecommandRoom(checkIn, checkOut);
     }
 
 

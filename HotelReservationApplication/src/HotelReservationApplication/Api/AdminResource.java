@@ -3,9 +3,6 @@ package HotelReservationApplication.Api;
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.User;
 import HotelReservationApplication.Service.AdminService.AdminService;
-import HotelReservationApplication.Service.CustomerService.CustomerService;
-import HotelReservationApplication.Service.ReservationService.ReservationService;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -13,8 +10,6 @@ public class AdminResource {
 
     private static final AdminResource adminResource = new AdminResource();
     private static final AdminService adminService = AdminService.getAdminService();
-    private static final ReservationService reservationService = ReservationService.getReservationService();
-    private static final CustomerService customerService = CustomerService.getCustomerService();
 
     public static AdminResource getAdminResource(){
         return adminResource;
@@ -37,7 +32,7 @@ public class AdminResource {
     }
 
     public void displayAllReservations(){
-        adminService.displayAllReservations();
+        adminService.printAllReservation();
     }
 
 }
