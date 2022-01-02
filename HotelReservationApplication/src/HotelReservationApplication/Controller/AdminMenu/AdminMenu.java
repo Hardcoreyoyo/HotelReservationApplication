@@ -1,6 +1,7 @@
 package HotelReservationApplication.Controller.AdminMenu;
 
 import HotelReservationApplication.Api.AdminResource;
+import HotelReservationApplication.Api.HotelResource;
 import HotelReservationApplication.Controller.MainMenu.MainMenu;
 import HotelReservationApplication.Model.IRoom;
 import HotelReservationApplication.Model.Room;
@@ -10,6 +11,7 @@ import java.util.*;
 public class AdminMenu {
 
     private static final AdminResource adminResource = AdminResource.getAdminResource();
+    private static final HotelResource hotelResource = HotelResource.getHotelResource();
 
     public void AdminMenu(){
 
@@ -45,6 +47,7 @@ public class AdminMenu {
             }
         }
         catch (Exception e){
+            System.out.println("---------------- Opes! ----------------\n");
             AdminMenu();
         }
 
@@ -59,7 +62,7 @@ public class AdminMenu {
         } else {
             adminResource.getAllUser().forEach(System.out::println);
         }
-        new AdminMenu().AdminMenu();
+        AdminMenu();
 
     }
 
@@ -67,7 +70,7 @@ public class AdminMenu {
 
         System.out.println("---------------- All Reservations Data ----------------\n");
         adminResource.displayAllReservations();
-        new AdminMenu().AdminMenu();
+        AdminMenu();
 
     }
 
@@ -80,22 +83,98 @@ public class AdminMenu {
         } else {
             adminResource.getAllRooms().forEach(System.out::println);
         }
-        new AdminMenu().AdminMenu();
+        AdminMenu();
 
     }
 
     private void AddNewRoom(){
 
-        Room room = new Room(600.0, "6", RoomType.Double);
+        Scanner scanner = new Scanner(System.in);
 
+        final String EnterRoomNumber = EnterRoomNumber(scanner);
+        final Double EnterRoomPrice = EnterRoomPrice(scanner);
+        final RoomType roomType  = EnterRoomType(scanner);
+
+        Room room = new Room(EnterRoomPrice, EnterRoomNumber, roomType);
         List<IRoom> list = new ArrayList<>();
         list.add(room);
         adminResource.addRoom(list);
 
         System.out.println("\n---------------- Add Room successful ----------------\n" + "\n");
 
-        new AdminMenu().AdminMenu();
+        AdminMenu();
     }
+
+    private String EnterRoomNumber(Scanner s){
+
+        System.out.println("---------------- Please Enter room number ----------------\n");
+
+        String Input = s.nextLine();
+
+        if(Input.length() == 0){
+            return EnterRoomNumber(s);
+        }
+
+        if(hotelResource.getRoom(Input) != null){
+
+            System.out.println("---------------- The room number is Exist !----------------\n");
+            return EnterRoomNumber(s);
+        }
+
+        return Input;
+
+    }
+
+    private double EnterRoomPrice(Scanner s) {
+
+        System.out.println("---------------- Please Enter room Price EX: 125.0----------------\n");
+
+        String Input = s.nextLine();
+        try {
+            return Double.parseDouble(Input);
+        } catch (Exception e) {
+            System.out.println("---------------- Wrong Price format EX: 125.0----------------\n");
+            EnterRoomPrice(s);
+            return EnterRoomPrice(s);
+        }
+
+
+    }
+
+    private RoomType EnterRoomType(Scanner s){
+
+        System.out.println("---------------- Please Enter Room Type----------------\n" +
+                "1. Single" + "\n" +
+                "2. Double" + "\n" +
+                "---------------- Please Select Number 1 or 2----------------\n" );
+
+        String Input = s.nextLine();
+
+        if(Objects.equals(Input, "1")){
+            return RoomType.Single;
+
+        } else if (Objects.equals(Input, "2")){
+            return RoomType.Double;
+        }
+
+        else {
+            return EnterRoomType(s);
+        }
+
+    }
+
+//    private void AddNewRoom(){
+//
+//        Room room = new Room(600.0, "6", RoomType.Double);
+//
+//        List<IRoom> list = new ArrayList<>();
+//        list.add(room);
+//        adminResource.addRoom(list);
+//
+//        System.out.println("\n---------------- Add Room successful ----------------\n" + "\n");
+//
+//        AdminMenu();
+//    }
 
 
 

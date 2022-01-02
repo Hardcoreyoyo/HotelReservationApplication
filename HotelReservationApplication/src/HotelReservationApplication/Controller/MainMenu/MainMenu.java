@@ -111,37 +111,6 @@ public class MainMenu{
 
 
 
-    //    private void Select() {
-//
-//        Scanner scanner = new Scanner(System.in);
-//
-//        try{
-//            String userInput = scanner.nextLine();
-//
-//            if(Objects.equals(userInput, "1")){
-//                FindAndReserveARoom();
-//            }else if (Objects.equals(userInput, "2")){
-//
-//            }else if (Objects.equals(userInput, "3")){
-//
-//            }else if (Objects.equals(userInput, "4")){
-//                new AdminMenu().AdminMenu();
-//            }else if (Objects.equals(userInput, "5")){
-//                System.out.println("---- Close Hotel Reservation System ----");
-//                System.exit(0);
-//            } else {
-//                MainMenu();
-//            }
-//        }
-//        catch (Exception e){
-//            MainMenu();
-//        }
-//        finally {
-//            scanner.close();
-//        }
-//
-//    }
-
 
 
 
