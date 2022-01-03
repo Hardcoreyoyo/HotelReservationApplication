@@ -11,15 +11,7 @@ public class User {
     public User(String first_name, String last_name, String email) {
         this.first_name = first_name;
         this.last_name = last_name;
-
-        Pattern pattern = Pattern.compile("^(.+)@(.+).com$");
-        if (pattern.matcher(email).matches()) {
-            this.email = email;
-        }else {
-//            throw new Exception("The email Form Wrong !");
-            throw new IllegalArgumentException("Invalid email");
-        }
-
+        this.email = email;
     }
 
     public String getFirst_name() {

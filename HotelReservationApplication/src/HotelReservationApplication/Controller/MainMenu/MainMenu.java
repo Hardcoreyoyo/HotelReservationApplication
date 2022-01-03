@@ -34,8 +34,8 @@ public class MainMenu{
             if (InputString.length() == 1) {
                 switch (InputString) {
                     case "1" -> FindAndReserveARoom();
-                    case "2" -> UserCheckReservation();
-                    case "3" -> UserRegisteration();
+                    case "2" -> new UserCheckReservation().CheckReservation();
+                    case "3" -> new CreateAnAccount().UserRegisteration();
                     case "4" -> new AdminMenu().AdminMenu();
                     case "5" -> Exit();
                     default -> MainMenu();
@@ -45,6 +45,14 @@ public class MainMenu{
             }
         }
         catch (Exception e){
+
+            System.out.println("\n" +
+                    "----------------\n" +
+                    "Opes! Something Wrong !\n" +
+                    "Please Contact Technician " +
+                    "And Continue use Hotel Reservation System\n" +
+                    "----------------\n");
+
             MainMenu();
         }
 
@@ -87,7 +95,14 @@ public class MainMenu{
 
         } catch (ParseException e){
             System.out.println("---- Wrong Date Format ----");
-        } catch (Exception ignored){
+        } catch (Exception e){
+
+            System.out.println("\n" +
+                    "----------------\n" +
+                    "Opes! Something Wrong !\n" +
+                    "Please Contact Technician " +
+                    "And Continue use Hotel Reservation System\n" +
+                    "----------------\n");
         }
 
         MainMenu();
@@ -100,19 +115,6 @@ public class MainMenu{
 //            Date dateOut = ft.parse("08/20/2021");
 
     }
-
-    private void UserCheckReservation(){
-
-    }
-
-    private void UserRegisteration(){
-
-    }
-
-
-
-
-
 
 
 }
